@@ -1,7 +1,7 @@
 import unittest
 import time
 
-import api
+import near_api
 
 from .config import NODE_URL
 from .utils import create_account
@@ -9,14 +9,15 @@ from .utils import create_account
 
 class JsonProviderTest(unittest.TestCase):
     def setUp(self):
-        self.provider = api.providers.JsonProvider(NODE_URL)
-        self.signer = api.signer.Signer(
+        self.provider = near_api.providers.JsonProvider(NODE_URL)
+        self.signer = near_api.signer.Signer(
             "test.near",
-            api.signer.KeyPair(
+            near_api.signer.KeyPair(
                 "ed25519:2wyRcSwSuHtRVmkMCGjPwnzZmQLeXLzLLyED1NDMt4BjnKgQL6tF85yBx6Jr26D2dUNeC716RBoTxntVHsegogYw"
             ))
-        self.master_account = api.account.Account(self.provider, self.signer,
-                                                  "test.near")
+        self.master_account = near_api.account.Account(self.provider,
+                                                       self.signer,
+                                                       "test.near")
 
     def test_status(self):
         status = self.provider.get_status()
@@ -27,7 +28,7 @@ class JsonProviderTest(unittest.TestCase):
         self.assertEqual(response["code_hash"],
                          "11111111111111111111111111111111")
 
-    def test_get_validators_orderes(self):
+    def test_get_validators_ordered(self):
         status = self.provider.get_status()
         latest_block_hash = status['sync_info']['latest_block_hash']
         self.assertEqual(
