@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 
 META_DATA = dict(name="near-client",
-                 version="0.1.0",
+                 version="0.1.1",
                  license="MIT",
                  author="NEAR Inc",
                  url="https://github.com/near/near-api-py",
