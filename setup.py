@@ -2,10 +2,10 @@ import os
 from setuptools import setup, find_packages
 
 META_DATA = dict(name="near-client",
-                 version="0.1.1",
+                 version="0.1.2",
                  license="MIT",
                  author="NEAR Inc",
-                 url="https://github.com/near/near-api-py",
+                 url="https://github.com/calimero-is-near/near-py-client",
                  packages=find_packages(),
                  install_requires=["requests", "base58", "ed25519"])
 
